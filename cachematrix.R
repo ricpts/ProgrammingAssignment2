@@ -28,10 +28,16 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-
-
-## Write a short comment describing this function
+## Now the function to calculate the actual inverse of the value passed
+## from above function. Using the "solve" function for the 1st time, though
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        ## Returning matrix object that is the inverse of cacheMatrix's
+  invMatrix <-x$getInv() ##getting the inverse, but
+  if(!is.null(invMatrix)) {   ## here's where we check if it's been done b4
+    return(invMatrix)
+  }                           ## do i need an 'else' statement here?
+  data <-x$get()              ## NOPE
+  invMatrix <-solve(data, ...)
+  invMatrix
 }
